@@ -32,14 +32,16 @@ body {
     
 }
 
-.calculator-grid .current-operand {
+.calculator-grid #current-operand {
     background-color: hsl(0, 0%, 20%);
+    min-height: 50px;
 }
-.calculator-grid .previous-operand {
+.calculator-grid #previous-operand {
     background-color: hsla(0, 0%, 30%,80%);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     font-size: 1rem;
+    min-height: 20px;
 	
 }
 
@@ -49,6 +51,8 @@ body {
 	justify-content: flex-end;
 	flex-wrap: wrap;
     padding-right: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 
 .output {
