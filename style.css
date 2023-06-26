@@ -7,10 +7,13 @@
 
 
 .calculator-grid{
-    background-color: greenyellow;
+    background-color: #202020;
     aspect-ratio: 3/4;
     width: auto;
     height: 80vh;
+    border-radius: 30px;
+    border: solid 5px #b8bab9;
+    box-shadow: 3px 3px 5px #383838;
 }
 
 
@@ -18,7 +21,5 @@
  .calculator-grid{
     width: 80vw;
     height: auto;
-    aspect-ratio: 3/4;
-    
 }
 }    
