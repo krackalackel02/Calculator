@@ -3,11 +3,6 @@ let previousOp = document.getElementById("previous-operand");
 
 let previousSum = previousOp.innerHTML;
 
-let operation = "return " + previousSum;
-let evaluator = Function(undefined, operation);
-
-console.log(evaluator());
-
 let buttons = Array.from(document.querySelectorAll(".btn"));
 buttons.forEach((button) => {
 	button.addEventListener("click", (e) => {
@@ -18,34 +13,47 @@ buttons.forEach((button) => {
 				previousOp.innerHTML = "";
 				currentOp.innerHTML = "";
 				break;
-			case "±":
-				break;
-			case "%":
+			case "DEL":
+				previousOp.innerHTML = previousOp.innerHTML.replace(/\S\s*$/, "");
 				break;
 			case "÷":
+				numeric = "/";
+				previousOp.innerHTML += numeric;
+
 				break;
 			case "×":
+				numeric = "*";
+				previousOp.innerHTML += numeric;
+
 				break;
 			case "−":
-				break;
-			case "+":
+				numeric = "-";
+				previousOp.innerHTML += numeric;
+
 				break;
 			case "=":
-				break;
-			case ".":
+				currentOp.innerHTML = eval(
+					removeCommasFromNumber(previousOp.innerHTML)
+				);
 				break;
 			default:
-				currentOp.innerHTML+=numeric;
+				previousOp.innerHTML += numeric;
+				break;
 		}
-        currentOp.innerHTML = addCommasToNumber(currentOp.innerHTML)
+		currentOp.innerHTML = addCommasToNumber(currentOp.innerHTML);
+		previousOp.innerHTML = addCommasToNumber(previousOp.innerHTML);
 	});
 });
 
+function removeCommasFromNumber(numberString) {
+	return numberString.replace(/,/g, "");
+}
 
-// function addCommasToNumber(numberString) {
-//     // Match any sequence of three digits followed by a non-digit character
-//     const regex = /\B(?=(\d{3})+(?!\d))/g;
-  
-//     // Insert commas after every match
-//     return numberString.replace(regex, ",");
-//   }
+function addCommasToNumber(numberString) {
+	numberString = removeCommasFromNumber(numberString);
+	// Match any sequence of three digits followed by a non-digit character
+	const regex = /\B(?=(\d{3})+(?!\d))/g;
+
+	// Insert commas after every match
+	return numberString.replace(regex, ",");
+}
