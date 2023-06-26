@@ -1,25 +1,58 @@
-.container{
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    display: flex;
+body {
+	background-image: linear-gradient(to bottom right, #a5ffd6, #ff686b);
+    font-size: 2rem;
 }
 
-
-.calculator-grid{
-    background-color: #202020;
-    aspect-ratio: 3/4;
-    width: auto;
-    height: 80vh;
-    border-radius: 30px;
-    border: solid 5px #b8bab9;
-    box-shadow: 3px 3px 5px #383838;
+.container {
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	display: flex;
 }
 
-
-@media screen  and (max-width: 1200px){
- .calculator-grid{
-    width: 80vw;
-    height: auto;
+.calculator-grid {
+	background-color: hsl(0, 0%, 13%);
+	aspect-ratio: 3/4;
+	width: auto;
+	height: 80vh;
+	border-radius: 30px;
+	border: solid 5px #ebedec;
+	box-shadow: 3px 3px 5px #383838;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
 }
-}    
+.calculator-grid * {
+	background-color: #c5c6ca;
+	outline: dotted red 1px;
+}
+
+.calculator-grid .current-operand {
+	background-color: hsl(0, 0%, 20%);
+}
+.calculator-grid .previous-operand {
+	background-color: hsl(0, 0%, 30%);
+}
+
+.output {
+	grid-column: 1/-1;
+	display: grid;
+    color: white;
+	grid-template-columns: 1fr;
+
+}
+.span-two {
+	grid-column: 1/3;
+}
+
+.calculator-grid .btn:nth-child(4n + 1),
+.calculator-grid .btn:last-child {
+	background-color: #fa8c11;
+    color: white;
+}
+
+@media screen and (max-width: 1200px) {
+	.calculator-grid {
+		width: 80vw;
+		height: auto;
+	}
+}
